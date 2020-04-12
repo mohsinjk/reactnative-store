@@ -2,6 +2,7 @@
   "expo": {
     "name": "reactnative-store",
     "slug": "reactnative-store",
+    "sdkVersion": "37.0.0",
     "platforms": [
       "ios",
       "android",
@@ -22,7 +23,13 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.mohsinjk.reactnativestore",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.mohsinjk.reactnativestore",
+      "versionCode": 1
     },
     "description": ""
   }
