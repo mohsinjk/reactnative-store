@@ -10,9 +10,11 @@ import {
 import { db } from '../config';
 
 let addItem = item => {
-	db.ref('/items').push({
-		text: item
-	});
+	if(item) {
+		db.ref('/items').push({
+			text: item
+		});
+	}
 };
 
 export default class AddItem extends Component {
@@ -20,10 +22,9 @@ export default class AddItem extends Component {
 		text: ''
 	};
 
-	saveItem = () => {
+	submit = () => {
 		addItem(this.state.text);
 		this.setState({text:''})
-		console.log('Item saved successfully');
 	};
 
 	render() {
@@ -37,7 +38,7 @@ export default class AddItem extends Component {
 				<TouchableHighlight
 					style={styles.button}
 					underlayColor="white"
-					onPress={()=>this.saveItem()}
+					onPress={()=>this.submit()}
 					>
 					<Text style={styles.buttonText}>Add</Text>
 				</TouchableHighlight>
