@@ -4,16 +4,8 @@ import { Button, View, Text } from 'react-native';
 export default class Home extends Component {
 	render() {
 		return (
-				<View>
-					<Button
-						title="Add an Item"
-						onPress={() => this.props.navigation.navigate('AddItem')}
-					/>
-					<Button
-						title="List of Items"
-						color="green"
-						onPress={() => this.props.navigation.navigate('List')}
-					/>
+				<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+					<Text>Home screen</Text>
 				</View>
 		);
 	}

@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack'
+import {createBottomTabNavigator} from 'react-navigation-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Home from './src/screens/Home';
 import AddItem from './src/screens/AddItem';
 import List from './src/screens/List';
 
-const AppNavigator = createStackNavigator(
+  const App = createBottomTabNavigator(
 	{
-		Home,
-		AddItem,
-		List
+		Home: { screen: Home },
+		AddItem: { screen: AddItem },
+		List: { screen: List },
 	},
 	{
-		initialRouteName: 'Home'
+	  defaultNavigationOptions: ({ navigation }) => ({
+		tabBarIcon: ({ focused, horizontal, tintColor }) => {
+		  const { routeName } = navigation.state;
+		  let IconComponent = Ionicons;
+		  let iconName;
+		  if (routeName === 'Home') {
+			iconName = `ios-information-circle${focused ? '' : '-outline'}`;
+		  } else if (routeName === 'AddItem') {
+			iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+		  } else if (routeName === 'List') {
+			iconName = `ios-checkmark-circle${focused ? '' : '-outline'}`;
+		  }
+		  return <IconComponent name={iconName} size={25} color={tintColor} />;
+		},
+	  }),
+	  tabBarOptions: {
+		activeTintColor: '#42f44b',
+		inactiveTintColor: 'gray',
+	  },
 	}
-);
-
-const AppContainer = createAppContainer(AppNavigator);
-
-export default class App extends Component {
-	render() {
-		return <AppContainer />;
-	}
-}
+  );
+  export default createAppContainer(App);
