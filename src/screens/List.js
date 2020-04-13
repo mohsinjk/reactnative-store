@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
-
 import ItemComponent from '../components/ItemComponent';
 
 import { db } from '../config';
@@ -31,8 +29,6 @@ export default class List extends Component {
 
 	render() {
 		return (
-			<SafeAreaView style={{ flex: 1 }}>
-
 			<View style={styles.container}>
 				{this.state.items.length > 0 ? (
 					<ItemComponent items={this.state.items} />
@@ -40,8 +36,6 @@ export default class List extends Component {
 					<Text>No items</Text>
 				)}
 			</View>
-			</SafeAreaView>
-
 		);
 	}
 }

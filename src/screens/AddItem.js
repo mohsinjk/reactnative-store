@@ -6,8 +6,6 @@ import {
 	StyleSheet,
 	TextInput
 } from 'react-native';
-import SafeAreaView from 'react-native-safe-area-view';
-
 
 import { db } from '../config';
 
@@ -34,8 +32,6 @@ export default class AddItem extends Component {
 
 	render() {
 		return (
-			<SafeAreaView style={{ flex: 1 }}>
-
 			<View style={styles.main}>
 				<Text style={styles.title}>Add Item</Text>
 				<TextInput style={styles.itemInput} onChange={this.handleChange} />
@@ -47,8 +43,6 @@ export default class AddItem extends Component {
 					<Text style={styles.buttonText}>Add</Text>
 				</TouchableHighlight>
 			</View>
-			</SafeAreaView>
-
 		);
 	}
 }
