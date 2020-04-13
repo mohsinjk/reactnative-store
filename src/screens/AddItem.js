@@ -51,9 +51,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		padding: 30,
 		flexDirection: 'column',
-		backgroundColor: '#6565fc'
+		backgroundColor: '#A6ABE7',
 	},
 	title: {
+		marginTop: 40,
 		marginBottom: 20,
 		fontSize: 25,
 		textAlign: 'center'
