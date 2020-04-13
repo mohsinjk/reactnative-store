@@ -1,70 +1,25 @@
-//This is an example code to show Image Icon in TextInput// 
 import React, { Component } from 'react';
-//import react in our code.
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack'
+import Home from './src/screens/Home';
+import AddItem from './src/screens/AddItem';
+import List from './src/screens/List';
 
-import { StyleSheet, View, TextInput, Image } from 'react-native';
-//import all the components we are going to use. 
+const AppNavigator = createStackNavigator(
+	{
+		Home,
+		AddItem,
+		List
+	},
+	{
+		initialRouteName: 'Home'
+	}
+);
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.SectionStyle}>
-          <Image
-            source={{uri:'https://raw.githubusercontent.com/AboutReact/sampleresource/master/input_username.png',}}
-            style={styles.ImageStyle}
-          />
+const AppContainer = createAppContainer(AppNavigator);
 
-          <TextInput
-            style={{ flex: 1 }}
-            placeholder="Enter Your Name Here"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-         <View style={styles.SectionStyle}>
-          <Image
-            source={{uri:'https://raw.githubusercontent.com/AboutReact/sampleresource/master/input_phone.png',}}
-            style={styles.ImageStyle}
-          />
-
-          <TextInput
-            style={{ flex: 1 }}
-            placeholder="Enter Your Mobile No Here"
-            underlineColorAndroid="transparent"
-          />
-        </View>
-      </View>
-    );
-  }
+export default class App extends Component {
+	render() {
+		return <AppContainer />;
+	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    margin: 10,
-  },
-
-  SectionStyle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    borderWidth: 0.5,
-    borderColor: '#fff',
-    height: 40,
-    borderRadius: 5,
-    margin: 10,
-   elevation: 5
-  },
-
-  ImageStyle: {
-    padding: 10,
-    margin: 5,
-    height: 25,
-    width: 25,
-    resizeMode: 'stretch',
-    alignItems: 'center',
-  },
-});
