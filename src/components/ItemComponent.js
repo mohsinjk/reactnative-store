@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class ItemComponent extends Component {
@@ -9,28 +9,37 @@ export default class ItemComponent extends Component {
 
 	render() {
 		return (
-			<View style={styles.itemsList}>
-				{this.props.items.map((item, index) => {
-					return (
-						<View key={index}>
-							<Text style={styles.itemtext}>{item.name}</Text>
-						</View>
-					);
-				})}
+			<View style={styles.MainContainer}>
+				<FlatList
+					data={this.props.items}
+					ItemSeparatorComponent={this.FlatListItemSeparator}
+					renderItem={({ item }) => (
+					  <View>
+						<Text style={styles.item}>
+						  {item.name}
+						</Text>
+					  </View>
+					)}
+					keyExtractor={(item, index) => index.toString()}
+				  />
 			</View>
 		);
 	}
 }
 
 const styles = StyleSheet.create({
-	itemsList: {
-		flex: 1,
-		flexDirection: 'column',
-		justifyContent: 'space-around'
+	MainContainer: {
+	  justifyContent: 'center',
+	  flex: 1,
+	  marginLeft: 10,
+	  marginRight: 0,
+	  marginBottom: 10,
+	  marginTop: 30,
 	},
-	itemtext: {
-		fontSize: 24,
-		fontWeight: 'bold',
-		textAlign: 'center'
-	}
-});
+  
+	item: {
+	  padding: 10,
+	  fontSize: 18,
+	  height: 44,
+	},
+  });
