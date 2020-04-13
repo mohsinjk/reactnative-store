@@ -22,6 +22,7 @@ export default class List extends Component {
 	componentDidMount() {
 		itemsRef.on('value', snapshot => {
 			let data = snapshot.val();
+			if(data===null) return [];
 			let items = Object.values(data);
 			this.setState({ items });
 		});

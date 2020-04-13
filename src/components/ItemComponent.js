@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export default class ItemComponent extends Component {
 	static propTypes = {
-		items: PropTypes.array.isRequired
+		items: [PropTypes.array.isRequired]
 	};
 
 	render() {
@@ -16,7 +16,7 @@ export default class ItemComponent extends Component {
 					renderItem={({ item }) => (
 					  <View>
 						<Text style={styles.item}>
-						  {item.name}
+						  {item.text}
 						</Text>
 					  </View>
 					)}

@@ -11,22 +11,18 @@ import { db } from '../config';
 
 let addItem = item => {
 	db.ref('/items').push({
-		name: item
+		text: item
 	});
 };
 
 export default class AddItem extends Component {
 	state = {
-		name: ''
+		text: ''
 	};
 
-	handleChange = e => {
-		this.setState({
-			name: e.nativeEvent.text
-		});
-	};
-	handleSubmit = () => {
-		addItem(this.state.name);
+	saveItem = () => {
+		addItem(this.state.text);
+		this.setState({text:''})
 		console.log('Item saved successfully');
 	};
 
@@ -34,12 +30,15 @@ export default class AddItem extends Component {
 		return (
 			<View style={styles.main}>
 				<Text style={styles.title}>Add Item</Text>
-				<TextInput style={styles.itemInput} onChange={this.handleChange} />
+				<TextInput style={styles.itemInput} 
+				onChangeText={(text) => this.setState({text})}
+				value={this.state.text}
+				/>
 				<TouchableHighlight
 					style={styles.button}
 					underlayColor="white"
-					onPress={this.handleSubmit}
-				>
+					onPress={()=>this.saveItem()}
+					>
 					<Text style={styles.buttonText}>Add</Text>
 				</TouchableHighlight>
 			</View>
@@ -52,7 +51,6 @@ const styles = StyleSheet.create({
 		flex: 1,
 		padding: 30,
 		flexDirection: 'column',
-		justifyContent: 'center',
 		backgroundColor: '#6565fc'
 	},
 	title: {
