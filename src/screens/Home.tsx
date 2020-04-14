@@ -4,7 +4,7 @@ import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 
 export default class Home extends Component {
-  constructor(props) {
+  constructor(props: Readonly<{}>) {
     super(props);
     this.state = {
       isReady: false,

@@ -7,7 +7,7 @@ let itemsRef = db.ref("/items");
 
 export default class ListScreen extends Component {
   state = {
-    items: [],
+    items: [{ text: "" }],
   };
 
   componentDidMount() {

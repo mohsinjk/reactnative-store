@@ -11,7 +11,7 @@ import {
 } from "native-base";
 import { db } from "../config";
 
-let addItem = (item) => {
+let addItem = (item: string) => {
   if (item) {
     db.ref("/items").push({
       text: item,
